@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <style>
     input {
@@ -13,20 +14,28 @@
 </head>
 
 <body>
-  <form action="./index.html">
-    <input type="image" id="start" src=" assets/homeScreenAnimation.gif" />
-    <audio>
-  <source id="trainSound" src="assets/sounds/BOOBOO.mp3" type="audio/mpeg">
-</audio>
+  <!-- Begin at homescreen.html -->
+  <!-- Upon click of Start button, play train sound & go to index.html -->
+    <input type="image" id="start" src="assets/homeScreenAnimation.gif" />
 
+    <audio id="trainSound" loop>
+      <source src="assets/sounds/BOOBOO.mp3" type="audio/mpeg">
+    </audio>
 </body>
-<script>
-  var trainSound = document.getElementById("trainSound");
-  var start = document.getElementById("start");
-  start.addEventListener(onclick,function(){
-  trainSound.play();
-});
 
+<script>
+  //Play train sound on loop
+  var trainSound = document.getElementById("trainSound");
+  var startButton = document.getElementById("start");
+
+  startButton.addEventListener("click", function() {
+    trainSound.play();
+    console.log("hello");
+
+    setTimeout(function() {
+      window.location = 'http://198.199.72.139:8005/index.html';
+    }, 5500);
+  });
 </script>
 
 </html>

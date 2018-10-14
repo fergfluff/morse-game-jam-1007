@@ -3,43 +3,47 @@
 // 1 = train
 // 2 = alien
 // 3 = minion
-letterIndices = ['e','t','a','m'];
 
+
+//Array to store alphabet letters to calculate Ben's answers
+letterIndices = ['e', 't', 'a', 'm'];
+
+//
 var currLessonID;
 
+//Maximum # of tries for Ben to get right answer before returning to index.html to pick a new video
 var maxTries = 2;
-// import englishToMorse
-
-//if user touches one of the cards
-var trainDiv = document.getElementById('train');
-var modal = document.getElementById('myModal');
-
-// keeps track of what is pressed (sequence of morse chars)
-var answerValue = '';
+//Current number of tries
 var numberOfTries = 0;
 
+//If user touches one of the cards
+var trainDiv = document.getElementById('train');
+
+//Empty string to fill with Ben's sequence of morse code characters
+var answerValue = '';
+
+//Empty arrays to fill with the train cards and morse code buttons html elements
 var video = [];
 var lesson = [];
 var lessonVideo = [];
 
-// var buttons = document.querySelectorAll('.morse-button'), i;
-
-for(let id = 0; id < 4; id++){
-  video[id] = document.getElementById('video'+id);
-  lesson[id] = document.getElementById('lesson'+id);
-  lessonVideo[id] = document.getElementById('lessonVideo'+id);
-  document.getElementById('card'+id).addEventListener("click", function(){
+//
+for (let id = 0; id < 4; id++) {
+  video[id] = document.getElementById('video' + id);
+  lesson[id] = document.getElementById('lesson' + id);
+  lessonVideo[id] = document.getElementById('lessonVideo' + id);
+  document.getElementById('card' + id).addEventListener("click", function() {
     beginLesson(id);
   });
 }
 
 //Sounds on buttons
-document.getElementById("dahButton").addEventListener("click", function(){
+document.getElementById("dahButton").addEventListener("click", function() {
   dahAudio.play();
   answerValue = answerValue + "-"
   checkAnswer();
 });
-document.getElementById("ditButton").addEventListener("click", function(){
+document.getElementById("ditButton").addEventListener("click", function() {
   ditAudio.play();
   answerValue = answerValue + "•"
   checkAnswer();
@@ -48,9 +52,9 @@ document.getElementById("ditButton").addEventListener("click", function(){
 var ditAudio = document.getElementById("dit");
 var dahAudio = document.getElementById("dah");
 
-function checkAnswer(){
+function checkAnswer() {
   console.log('answerValue', answerValue);
-  if(answerValue[answerValue.length-1] !== englishToMorse[''+letterIndices[currLessonID]][answerValue.length-1]) {
+  if (answerValue[answerValue.length - 1] !== englishToMorse['' + letterIndices[currLessonID]][answerValue.length - 1]) {
     //if answer is wrong
     numberOfTries++;
     answerValue = '';
@@ -58,7 +62,7 @@ function checkAnswer(){
       reset();
     } else {
       beginLesson(currLessonID)
-      if(englishToMorse[''+letterIndices[currLessonID]][0] == '•'){
+      if (englishToMorse['' + letterIndices[currLessonID]][0] == '•') {
         blinkDitButton()
       } else {
         blinkDahButton()
@@ -66,14 +70,14 @@ function checkAnswer(){
     }
   }
   // compare whole string
-  if((englishToMorse[''+letterIndices[currLessonID]]) == answerValue){
+  if ((englishToMorse['' + letterIndices[currLessonID]]) == answerValue) {
     answerValue = '';
     numberOfTries = 0;
     video[currLessonID].style.display = 'block';
   }
 }
 
-function beginLesson(lessonID){
+function beginLesson(lessonID) {
   currLessonID = lessonID;
   //TODO autoplay video here
   answerValue = '';
@@ -83,7 +87,7 @@ function beginLesson(lessonID){
   lessonVideo[lessonID].play();
 }
 
-function reset(){
+function reset() {
   console.log("reset!")
   pressed = '';
   location.reload();
@@ -92,13 +96,13 @@ function reset(){
 }
 
 //#21d68c
-function blinkDitButton(){
+function blinkDitButton() {
   console.log(dit);
   ////"press Dit
   var magicCheck = false;
   setInterval(function() {
     var dit = document.getElementById("ditButton");
-    if(magicCheck == false) {
+    if (magicCheck == false) {
       console.log();
       dit.style.color = '#f7f7f7';
       dit.style.background = '#f7f7f7';
@@ -112,13 +116,13 @@ function blinkDitButton(){
   }, 1000);
 }
 
-function blinkDahButton(){
+function blinkDahButton() {
   console.log(dit);
   //"press Dah
   var magicCheck = false;
   setInterval(function() {
     var dah = document.getElementById("dahButton");
-    if(magicCheck == false) {
+    if (magicCheck == false) {
       dah.style.color = '#f7f7f7';
       dah.style.background = '#f7f7f7';
       magicCheck = true;

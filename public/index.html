@@ -6,13 +6,30 @@
   <meta charset="utf-8" />
 </head>
 
+
 <body>
+
+  <audio id="trainSound" loop>
+    <source src="assets/sounds/BOOBOO.mp3" type="audio/mpeg">
+  </audio>
+
+
   <div id="yellowbg">
-    <!-- Train and cards -->
-    <div class="grid-container"  id="train">
-      <button class="grid-item" id="maincard" >
+    <!-- Divs for train, which is the video index -->
+    <!--
+    index reference
+    0 = elephant
+    1 = train
+    2 = alien
+    3 = minion -->
+    <div class="grid-container" id="train">
+
+      <!-- Front of train -->
+      <button class="grid-item" id="maincard">
         <img id="maincard" class="cards" src="assets/images/maincard.png" alt="Full Train">
       </button>
+
+      <!-- Cars/cards of train  -->
       <button class="grid-item cards" id="card0">
         <img class="cards" src="assets/images/image0.png" alt="Elephant">
       </button>
@@ -27,57 +44,54 @@
       </button>
     </div>
 
-  <!-- Illustrator lessons -->
-
+    <!-- Divs for Morse Code Lessons -->
     <div id="lesson0" class="lessons">
-        <video id="lessonVideo0" width="1280" height="500" controls playsinline>
+      <video id="lessonVideo0" width="1280" height="500" controls playsinline>
           <source src="assets/videos/lessons/lesson0.mp4" type="video/mp4">
         </video>
     </div>
     <div id="lesson1" class="lessons">
-        <video id="lessonVideo1" width="1280" height="500" controls playsinline>
+      <video id="lessonVideo1" width="1280" height="500" controls playsinline>
           <source src="assets/videos/lessons/lesson1.mp4" type="video/mp4">
         </video>
     </div>
     <div id="lesson2" class="lessons">
-        <video id="lessonVideo2" width="1280" height="500" controls playsinline>
+      <video id="lessonVideo2" width="1280" height="500" controls playsinline>
           <source src="assets/videos/lessons/lesson2.mp4" type="video/mp4">
         </video>
     </div>
     <div id="lesson3" class="lessons">
-        <video id="lessonVideo3" width="1280" height="500" controls playsinline>
+      <video id="lessonVideo3" width="1280" height="500" controls playsinline>
           <source src="assets/videos/lessons/lesson3.mp4" type="video/mp4">
         </video>
     </div>
   </div>
 
-  <!-- Modal content -->
+  <!-- Divs for Reward Videos -->
   <div id="video0" class="modal">
-    <!-- <button class="close">x</button> -->
-    <iframe  width="960" height="400" src="https://www.youtube.com/embed/c2wgaB1Bu8E?controls=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="960" height="400" src="https://www.youtube.com/embed/c2wgaB1Bu8E?controls=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 
   <div id="video1" class="modal">
-    <!-- <button class="close">x</button> -->
-    <iframe  width="960" height="400" src="https://www.youtube.com/embed/SD-DyTvj5Zk?start=37&end=82?controls=0&rel=0" frameborder="0"  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="960" height="400" src="https://www.youtube.com/embed/SD-DyTvj5Zk?start=37&end=82?controls=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 
   <div id="video2" class="modal">
-    <!-- <button class="close">x</button> -->
-    <iframe  width="960" height="400" src="https://www.youtube.com/embed/zT8If2VABWQ?controls=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="960" height="400" src="https://www.youtube.com/embed/zT8If2VABWQ?controls=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 
   <div id="video3" class="modal">
-    <!-- <button class="close">x</button> -->
-    <iframe  width="960" height="400" src="https://www.youtube.com/embed/FsdG6kuYYDI?controls=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <iframe width="960" height="400" src="https://www.youtube.com/embed/FsdG6kuYYDI?controls=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 
-  <div class="morse-buttons" >
+  <!-- Divs for morse buttons dit and dah -->
+  <div class="morse-buttons">
     <input id="pressed" type="hidden" type="text" />
-    <button id="ditButton" value="1" class="morse-button" name="submitbutton" >•</button>
-    <button id="dahButton" value="2" class="morse-button" name="submitbutton" >‒</button>
+    <button id="ditButton" value="1" class="morse-button" name="submitbutton">•</button>
+    <button id="dahButton" value="2" class="morse-button" name="submitbutton">‒</button>
   </div>
 
+  <!-- Audio for dit and dah -->
   <audio id="dit">
     <source src="assets/sounds/dit.mp3" type="audio/mp3">
       Your browser does not support the audio element.
@@ -88,7 +102,12 @@
       Your browser does not support the audio element.
   </audio>
 
+  <!-- Morse Code dictionary.js and script.js -->
   <script src="dictionary.js"></script>
   <script src="script.js"></script>
 </body>
+
+
+
+
 </html>
